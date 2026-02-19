@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Convertio</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Convertio</h1>
+    <p class="subtitle">Convert files locally. Nothing leaves your machine.</p>
+
+    <!-- Step 1: Upload -->
+    <div class="card" id="step-upload">
+      <label for="file-input" class="upload-label" id="upload-label">
+        <span id="upload-text">Click to select a file</span>
+        <input type="file" id="file-input" hidden />
+      </label>
+    </div>
+
+    <!-- Step 2: Format Selection -->
+    <div class="card hidden" id="step-format">
+      <div class="format-header">
+        <button id="back-btn" class="back-btn">← Back</button>
+        <p class="label">Convert to:</p>
+      </div>
+      <div id="format-options" class="format-options"></div>
+      <button id="convert-btn" disabled>Convert</button>
+    </div>
+
+    <!-- Step 3: Progress -->
+    <div class="card hidden" id="step-progress">
+      <p class="label" id="progress-label">Converting...</p>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Step 4: Download -->
+    <div class="card hidden" id="step-download">
+      <p class="label">Your file is ready!</p>
+      <a id="download-link" href="#" class="download-btn">Download File</a>
+      <button id="reset-btn" class="reset-btn">Convert Another</button>
+    </div>
+
+    <!-- Error -->
+    <div class="card hidden error-card" id="step-error">
+      <p id="error-message">Something went wrong.</p>
+      <button id="error-reset-btn" class="reset-btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
