@@ -75,8 +75,11 @@ def convert_file(input_path, output_path, in_ext, out_ext):
 
     elif in_ext in doc_formats and out_ext in doc_formats:
         outdir = app.config['OUTPUT_FOLDER']
-        _run(['libreoffice', '--headless', '--convert-to', out_ext,
-              '--outdir', outdir, os.path.abspath(input_path)])
+        cmd = ['libreoffice', '--headless', '--convert-to', out_ext, '--outdir', outdir]
+        if in_ext == 'pdf':
+            cmd += ['--infilter=writer_pdf_import']
+        cmd.append(os.path.abspath(input_path))
+        _run(cmd)
         input_stem = os.path.splitext(os.path.basename(input_path))[0]
         lo_output = os.path.join(outdir, f"{input_stem}.{out_ext}")
         if not os.path.exists(lo_output):
@@ -195,4 +198,4 @@ def download(file_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
